@@ -8,9 +8,28 @@
     </h:head>
     <h:body>
         
-        <h:outputLabel value="#{hello.sayHello()}" />
-        
-        <p:graphicImage value="resources/images/keep.jpg" />
+        <h:outputLabel value="Cadastra um Filme: " /> <br></br><br></br>
+        <h:form>
+            
+            <h:outputLabel value="Título: " />
+            <h:inputText value=""/><br></br><br></br>
+            
+            <h:outputLabel value="Data Lançamento: " />
+            <h:inputText value=""/><br></br><br></br>
+            
+            <h:outputLabel value="Nota: " />
+            <h:inputText value=""/><br></br><br></br>
+            
+            <h:outputLabel value="Descrição: " />
+            <h:inputText value=""/><br></br><br></br>
+            
+            <h:outputLabel value="Nota: " />
+            <h:inputText value=""/><br></br><br></br>
+            
+            <h:commandButton value="Salvar"/> <br></br><br></br>
+            <h:commandButton value="Cancelar"/>
+            
+        </h:form>        
     </h:body>
 </html>
 
