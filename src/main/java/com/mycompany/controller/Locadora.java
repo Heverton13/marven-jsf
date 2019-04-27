@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetomarven;
+package com.mycompany.controller;
+
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Aluno
  */
-public class Cesta {
+@ManagedBean
+public class Locadora {
     
 }
