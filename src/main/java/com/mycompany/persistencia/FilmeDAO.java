@@ -19,25 +19,25 @@ public class FilmeDAO {
     private final String DELETEFILME = "DELETE FROM FILMES WHERE ID_FILME = ?";
     private final String LISTAFILME = "SELECT * FROM FILMES WHERE ORDER BY";
     
-    public boolean inserirFilme(Filme filme){
+    public boolean inserirFilme(String titulo, Date data_lancamento, int nota, String descricao,int quantidade){
+        
         
         Conexao.dbConnection();
-        
         try {
             
             PreparedStatement preparaInstrucao;
             preparaInstrucao = Conexao.getConexao().prepareStatement(INSERTFILME);
             
-            preparaInstrucao.setString(1, filme.getTitulo());
-            preparaInstrucao.setDate(2, (Date) filme.getData_lancamento());
-            preparaInstrucao.setInt(3, filme.getNota());
-            preparaInstrucao.setString(4, filme.getDescricao());
-            preparaInstrucao.setInt(5, filme.getQuantidade());
-            
-            Conexao.closeConnection();
+            preparaInstrucao.setString(1,titulo);
+            preparaInstrucao.setDate(2, data_lancamento);
+            preparaInstrucao.setInt(3, nota);
+            preparaInstrucao.setString(4, descricao);
+            preparaInstrucao.setInt(5, quantidade);
+            preparaInstrucao.executeUpdate();
             System.out.println("Adicionou");
             return true;
         } catch (SQLException ex) {
+            Conexao.closeConnection();
             System.err.println(ex);
             ex.printStackTrace();
             return false;
