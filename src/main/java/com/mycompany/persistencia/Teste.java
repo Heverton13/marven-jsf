@@ -6,8 +6,8 @@
 package com.mycompany.persistencia;
 
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import com.mycompany.modelo.Filme;
+import java.sql.Date;
 
 /**
  *
@@ -17,7 +17,15 @@ public class Teste {
     
     public static void main(String[] args) {
         
-            Conexao.dbConnection();
+        Date data = Date.valueOf("2010-10-10");
+        Filme f = new Filme(" ABC", data, 4,"Filme que quero testar", 3);
+        
+        FilmeDAO dao = new FilmeDAO();
+        if(dao.inserirFilme(f)){
+            System.out.println("Deu certo");
+        }else{
+            System.out.println("Erro");
+        }
 		
 	}
     
