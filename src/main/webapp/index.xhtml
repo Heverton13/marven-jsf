@@ -5,15 +5,18 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Locadora de Filmes - Seu filme aqui</title>
+        <h:outputStylesheet library="css" name="estilo.css" />
     </h:head>
     <h:body>
         
+        <div id="panelInput">
         <h:outputLabel value="Cadastra um Filme: " /> <br></br><br></br>
         <h:form>
             
             <h:outputLabel value="Título: " />
-            <h:inputText value=""/><br></br><br></br>
+            <h:inputText id="fname" value="" required="true" requiredMessage="Informe um título para o filme"/>
+                         <h:message for="fname" style="color:red"/><br></br><br></br>
             
             <h:outputLabel value="Data Lançamento: " />
             <h:inputText value=""/><br></br><br></br>
@@ -27,16 +30,17 @@
             <h:outputLabel value="Nota: " />
             <h:inputText value=""/><br></br><br></br>
             
-            <h:commandButton value="Salvar"/> <br></br><br></br>
-            <h:commandButton value="Cancelar"/>
+            <h:commandButton value="ADICIONAR"/> <br></br><br></br>
+            <h:commandButton value="CANCELAR"/>
             
-        </h:form>        
+        </h:form>  
+        </div>
         <br></br><br></br>
         
         <center>
         <h:dataTable value="#{locadora.filmes}" var="filme" border="1">
         
-        <f:facet name="header">Lista de Filmes</f:facet>
+        <f:facet name="header">LISTA DE FILMES</f:facet>
         
         <h:column>
            <f:facet name ="header">ID</f:facet>
@@ -66,6 +70,14 @@
         <h:column>
            <f:facet name ="header">QUANTIDADE</f:facet >
            #{filme.quantidade}
+        </h:column>
+        
+        <h:column>
+            <f:facet name ="header">ADICIONAR A CESTA</f:facet >
+            <h:commandButton id="botao"
+                value="ADICIONAR"
+                action="#{locadora.adicionarFilme(f)}"
+                />
         </h:column>
        </h:dataTable>
        </center>

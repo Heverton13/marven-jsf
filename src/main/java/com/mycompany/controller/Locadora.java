@@ -34,6 +34,10 @@ public class Locadora {
         
         return lista;
     } 
+    
+    public void adicionarFilme(Filme f){
+        
+    }
         
 }
     
