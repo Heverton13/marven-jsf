@@ -5,7 +5,7 @@
  */
 package com.mycompany.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 /**
