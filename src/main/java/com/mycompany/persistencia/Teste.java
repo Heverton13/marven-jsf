@@ -18,14 +18,17 @@ public class Teste {
     public static void main(String[] args) {
         
         Date data = Date.valueOf("2010-10-10");
-        Filme f = new Filme(" ABC", data, 4,"Filme que quero testar", 3);
         
-        FilmeDAO dao = new FilmeDAO();
-        if(dao.inserirFilme(f)){
-            System.out.println("Deu certo");
-        }else{
-            System.out.println("Erro");
-        }
+        Filme f = new Filme();
+        
+        f.setTitulo("A morte da vipuva");
+        f.setData_lancamento(data);
+        f.setNota(3);
+        f.setDescricao("Filme novo ");
+        f.setQuantidade(50);
+        
+        FilmeDAO con = new FilmeDAO();
+        con.inserirFilme(f);
 		
 	}
     

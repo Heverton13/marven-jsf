@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class FilmeDAO {
     
-    private final String INSERTFILME = "INSERT INTO FILMES (TITULO, DATA_LANCAMENTO, NOTA, DESCRICAO, QUANTIDADE) VALUES (?,?,?,?,?)";
+    private final String INSERTFILME = "INSERT INTO FILMES (TITULO, DATA_LANCAMENTO, NOTA, DESCRICAO, QUANTIDADE) VALUES (?,?,?,?,?);";
     private final String DELETEFILME = "DELETE FROM FILMES WHERE ID_FILME = ?";
     private final String LISTAFILME = "SELECT * FROM FILMES WHERE ORDER BY";
     
@@ -29,12 +29,13 @@ public class FilmeDAO {
             preparaInstrucao = Conexao.getConexao().prepareStatement(INSERTFILME);
             
             preparaInstrucao.setString(1, filme.getTitulo());
-            preparaInstrucao.setDate(2, (Date) filme.getDatalancamento());
+            preparaInstrucao.setDate(2, (Date) filme.getData_lancamento());
             preparaInstrucao.setInt(3, filme.getNota());
             preparaInstrucao.setString(4, filme.getDescricao());
             preparaInstrucao.setInt(5, filme.getQuantidade());
             
             Conexao.closeConnection();
+            System.out.println("Adicionou");
             return true;
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -48,11 +49,11 @@ public class FilmeDAO {
      *
      * @return
      */
-    public static ArrayList<Filme> list(){
+    public static ArrayList<Filme> listar(){
         
         ArrayList<Filme> lista = new ArrayList<Filme>();
         Conexao.dbConnection();
-        String query = "SELECT * FROM FILMES WHERE ORDER BY";
+        String query = "SELECT * FROM FILMES";
         
         try {
             PreparedStatement pst = Conexao.getConexao().prepareStatement(query);
@@ -60,8 +61,9 @@ public class FilmeDAO {
             
             while(rs.next()){
                 Filme f = new Filme(
+                    rs.getInt("ID_FILME"),
                     rs.getString("TITULO"),
-                    rs.getDate("DATA_ENTRADA"), 
+                    rs.getDate("DATA_LANCAMENTO"), 
                     rs.getInt("NOTA"),
                     rs.getString("DESCRICAO"),
                     rs.getInt("QUANTIDADE"));  
