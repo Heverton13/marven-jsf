@@ -9,25 +9,20 @@ import com.mycompany.modelo.Filme;
 import com.mycompany.persistencia.FilmeDAO;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Aluno
  */
-@ManagedBean
-@SessionScoped
+@ManagedBean(name="locadora")
 public class Locadora {
    
     private ArrayList<Filme> lista = null;
-    private Filme filme = new Filme();
-    private FilmeDAO filmes = new FilmeDAO();
-    
+    FilmeDAO filmes = new FilmeDAO();
+    private Filme dados = new Filme();
 
     public Locadora() {
         
-        this.filme = new Filme(this.getFilme().getTitulo(),this.getFilme().getData_lancamento(),this.getFilme().getNota(),this.getFilme().getDescricao(),this.getFilme().getQuantidade());
-    
     }
     
     public ArrayList<Filme> getLista() {
@@ -50,18 +45,20 @@ public class Locadora {
         
         return lista;
     } 
-    
-    public Filme getFilme() {
-        return filme;
+
+    public Filme getDados() {
+        return dados;
     }
 
-    public void setFilme(Filme filme) {
-        this.filme = filme;
+    public void setDados(Filme dados) {
+        this.dados = dados;
     }
     
     public void adicionarFilme(){  
         System.out.println("Bean");
-        filmes.inserirFilme(filme);
+        System.out.println(dados.getTitulo());
+        filmes.inserirFilme(dados);
+        
     }
 
 }

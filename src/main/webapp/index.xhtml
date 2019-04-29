@@ -15,22 +15,22 @@
         <h:form>
             
             <h:outputLabel value="Título: " />
-            <h:inputText id="fname" value="#{locadora.filme.titulo}" required="true" requiredMessage="Informe um título para o filme"/>
+            <h:inputText id="fname" value="#{locadora.dados.titulo}" required="true" requiredMessage="Informe um título para o filme"/>
             <h:message for="fname" style="color:red"/><br></br><br></br>
             
             <h:outputLabel value="Data Lançamento: " />
-            <h:inputText value="#{locadora.filme.data_lancamento}"/><br></br><br></br>
+            <h:inputText id="t2" value="#{locadora.dados.data_lancamento}"/><br></br><br></br>
             
             <h:outputLabel value="Nota: " />
-            <h:inputText value="#{locadora.filme.nota}"/><br></br><br></br>
+            <h:inputText id="t3" value="#{locadora.dados.nota}"/><br></br><br></br>
             
             <h:outputLabel value="Descrição: " />
-            <h:inputTextarea value="#{locadora.filme.descricao}"/><br></br><br></br>
+            <h:inputTextarea value="#{locadora.dados.descricao}"/><br></br><br></br>
             
             <h:outputLabel value="Quantidade: " />
-            <h:inputText value="#{locadora.filme.quantidade}"/><br></br><br></br>
+            <h:inputText value="#{locadora.dados.quantidade}"/><br></br><br></br>
             
-            <h:commandButton value="ADICIONAR" action="#{locadora.adicionarFilme()}"/> <br></br><br></br>
+            <h:commandButton value="ADICIONAR" immediate="true" action="#{locadora.adicionarFilme()}"/> <br></br><br></br>
             <h:commandButton value="CANCELAR"/>
             
         </h:form>  

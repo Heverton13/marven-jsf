@@ -21,7 +21,9 @@ public class Teste {
         FilmeDAO filmes = new FilmeDAO();
         
         Date data = Date.valueOf("2010-10-10");
-       
+        
+        Filme f2 = new Filme("AAA",data,5,"AAA",5);
+        filmes.inserirFilme(f2);
        
 		
 	}
