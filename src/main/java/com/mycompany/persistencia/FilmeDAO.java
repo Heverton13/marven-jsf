@@ -35,9 +35,10 @@ public class FilmeDAO {
             preparaInstrucao.setInt(5, f.getQuantidade());
             preparaInstrucao.executeUpdate();
             System.out.println("Adicionou");
+            Conexao.closeConnection();
             return true;
         } catch (SQLException ex) {
-            Conexao.closeConnection();
+            
             System.err.println(ex);
             ex.printStackTrace();
             return false;
