@@ -7,11 +7,6 @@ package com.mycompany.controller;
 
 import com.mycompany.modelo.Filme;
 import com.mycompany.persistencia.FilmeDAO;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,21 +20,14 @@ import javax.faces.bean.SessionScoped;
 public class Locadora {
    
     private ArrayList<Filme> lista = null;
-    private Filme filme;
+    private Filme filme = new Filme();
     private FilmeDAO filmes = new FilmeDAO();
     
-    private String titulo;
-    private Date data;
-    private Integer nota;
-    private String descricao;
-    private Integer quantidade;
-    
 
-    public Locadora() throws ParseException {
+    public Locadora() {
         
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-java.   sql.Date datas = new java.sql.Date(df.parse("000-00-00").getTime());
-        filme = new Filme("Titulo do Filme",datas,0,"Descricao",0);
+        this.filme = new Filme(this.getFilme().getTitulo(),this.getFilme().getData_lancamento(),this.getFilme().getNota(),this.getFilme().getDescricao(),this.getFilme().getQuantidade());
+    
     }
     
     public ArrayList<Filme> getLista() {
@@ -55,7 +43,7 @@ java.   sql.Date datas = new java.sql.Date(df.parse("000-00-00").getTime());
     }
 
     public ArrayList<Filme> getFilmes() {
-       
+   
         if(lista == null){
             lista = FilmeDAO.listar();
         }
@@ -70,65 +58,11 @@ java.   sql.Date datas = new java.sql.Date(df.parse("000-00-00").getTime());
     public void setFilme(Filme filme) {
         this.filme = filme;
     }
-
-    public void setFilmes(FilmeDAO filmes) {
-        this.filmes = filmes;
-    }
     
-    public void adicionarFilme(String titulo, Date data_lancamento, int nota, String descricao,int quantidade){
-
-        filme.setTitulo(titulo);
-        filme.setData_lancamento(data_lancamento);
-        filme.setNota(nota);
-        filme.setDescricao(descricao);
-        filme.setQuantidade(quantidade);
-        
-        System.out.println(filme.getDescricao() + filme.getData_lancamento() + filme.getNota() + filme.getDescricao() + filme.getQuantidade());
-        filmes.inserirFilme(filme.getTitulo(), filme.getData_lancamento(), filme.getNota(), filme.getDescricao(), filme.getQuantidade());
-    
+    public void adicionarFilme(){  
+        System.out.println("Bean");
+        filmes.inserirFilme(filme);
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public Integer getNota() {
-        return nota;
-    }
-
-    public void setNota(Integer nota) {
-        this.nota = nota;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-    
-    
-    
 }
     

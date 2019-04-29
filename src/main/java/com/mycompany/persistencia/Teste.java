@@ -22,7 +22,6 @@ public class Teste {
         
         Date data = Date.valueOf("2010-10-10");
        
-        filmes.inserirFilme("A morte da bezerra",data,5,"O filme de todos os tempos",10);
        
 		
 	}

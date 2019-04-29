@@ -30,13 +30,7 @@
             <h:outputLabel value="Quantidade: " />
             <h:inputText value="#{locadora.filme.quantidade}"/><br></br><br></br>
             
-            <h:commandButton value="ADICIONAR"  immediate="true" action="#{locadora.adicionarFilme(
-                                                                           locadora.filme.titulo,
-                                                                           locadora.filme.data_lancamento,
-                                                                           locadora.filme.nota,
-                                                                           locadora.filme.descricao,
-                                                                           locadora.filme.quantidade
-                                                                           )}"/> <br></br><br></br>
+            <h:commandButton value="ADICIONAR" action="#{locadora.adicionarFilme()}"/> <br></br><br></br>
             <h:commandButton value="CANCELAR"/>
             
         </h:form>  
