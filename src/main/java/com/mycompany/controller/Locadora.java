@@ -7,6 +7,7 @@ package com.mycompany.controller;
 
 import com.mycompany.modelo.Filme;
 import com.mycompany.persistencia.FilmeDAO;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 
@@ -17,12 +18,17 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="locadora")
 public class Locadora {
    
-    private ArrayList<Filme> lista = null;
+    private ArrayList<Filme> lista =  new ArrayList<Filme>();
     FilmeDAO filmes = new FilmeDAO();
     private Filme dados = new Filme();
+    
+    private String titulo,descricao;
+    private Date datalancamento;
+    private Integer nota,quantidade;
+    
 
     public Locadora() {
-        
+        dados = new Filme();
     }
     
     public ArrayList<Filme> getLista() {
@@ -60,6 +66,7 @@ public class Locadora {
         filmes.inserirFilme(dados);
         
     }
-
+    
+    
 }
     
