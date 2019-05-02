@@ -2,7 +2,7 @@
 package com.mycompany.persistencia;
 
 import com.mycompany.modelo.Filme;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,13 +23,15 @@ public class FilmeDAO {
         
         
         Conexao.dbConnection();
+        System.out.println(f);
         try {
             
+           
             PreparedStatement preparaInstrucao;
             preparaInstrucao = Conexao.getConexao().prepareStatement(INSERTFILME);
             
             preparaInstrucao.setString(1,f.getTitulo());
-            preparaInstrucao.setDate(2, f.getData_lancamento());
+            preparaInstrucao.setDate(2, new java.sql.Date(new Date().getTime()));
             preparaInstrucao.setInt(3, f.getNota());
             preparaInstrucao.setString(4, f.getDescricao());
             preparaInstrucao.setInt(5, f.getQuantidade());

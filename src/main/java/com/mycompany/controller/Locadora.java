@@ -18,17 +18,13 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="locadora")
 public class Locadora {
    
-    private ArrayList<Filme> lista =  new ArrayList<Filme>();
-    FilmeDAO filmes = new FilmeDAO();
-    private Filme dados = new Filme();
-    
-    private String titulo,descricao;
-    private Date datalancamento;
-    private Integer nota,quantidade;
-    
+    private ArrayList<Filme> lista;
+    FilmeDAO filmes;
+    private Filme dados;    
 
     public Locadora() {
         dados = new Filme();
+        lista =  null;
     }
     
     public ArrayList<Filme> getLista() {
@@ -63,7 +59,10 @@ public class Locadora {
     public void adicionarFilme(){  
         System.out.println("Bean");
         System.out.println(dados.getTitulo());
+        filmes = new FilmeDAO();
         filmes.inserirFilme(dados);
+        
+        dados = new Filme();
         
     }
     

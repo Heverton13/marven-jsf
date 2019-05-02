@@ -22,7 +22,7 @@ public class Teste {
         
         Date data = Date.valueOf("2010-10-10");
         
-        Filme f2 = new Filme("AAA",data,5,"AAA",5);
+        Filme f2 = new Filme("Os vingadores",data,5,"Filme massa",5);
         filmes.inserirFilme(f2);
        
 		
