@@ -1,12 +1,77 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="estilo.css" />
     </h:head>
     <h:body>
-        Hello from Facelets
+            <header id="main-header">Locadora de Filmes - Seu filme está aqui
+                        </header> 
+        
+                        <nav id="menu">
+                                <ul>
+                                    <center>
+                                    <li><a href="index.xhtml">Cadastrar</a></li>
+                                    <li><a href="lista.xhtml">Ver Lista</a></li>
+                                    <li><a href="cesta.xhtml">Cesta</a></li>
+                                    </center>
+                                </ul>
+                            </nav>
+            <center>
+                
+                <br></br>
+                
+                
+                
+                <br></br> 
+                <h:form>
+                   <p:dataTable value="#{controler.filmes}" var="filme" border="1">
+
+                            <f:facet name="header">Listagem de Filmes Disponiveis</f:facet>
+
+                            <p:column>
+                                <f:facet name ="header">ID</f:facet>
+                       #{filme.id}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name ="header">TITULO</f:facet >
+                       #{filme.titulo}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name ="header">DATA DE LANÇAMENTO</f:facet >
+                       #{filme.data_lancamento}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name ="header">NOTA</f:facet >
+                       #{filme.nota}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name ="header">DESCRIÇÃO</f:facet >
+                       #{filme.descricao}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name ="header">QUANTIDADE</f:facet >
+                       #{filme.quantidade}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name ="header">ADICIONAR A CESTA</f:facet >
+                                <center><h:commandButton value="Adicionar" id="botao" action="#{cesta.addFilme(filme)}"></h:commandButton> </center>
+                            </p:column>
+                        </p:dataTable>
+                </h:form>
+                    </center>
+
+
     </h:body>
 </html>
 

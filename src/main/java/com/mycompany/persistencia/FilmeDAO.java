@@ -1,7 +1,7 @@
 
 package com.mycompany.persistencia;
 
-import com.mycompany.modelo.Cesta;
+
 import com.mycompany.modelo.Filme;
 import java.util.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +19,7 @@ public class FilmeDAO {
     private final String INSERTFILME = "insert into filmes (TITULO, DATA_LANCAMENTO, NOTA, DESCRICAO, QUANTIDADE) values (?,?,?,?,?);";
     private final String DELETEFILME = "DELETE FROM FILMES WHERE ID_FILME = ?";
     private final String LISTAFILME = "SELECT * FROM FILMES WHERE ORDER BY";
-    private final String UPDATEQUANTIDADE = "UPDATE FILMES SET QUANTIDADE = ? WHERE ID = ?";
+    private final String UPDATEQUANTIDADE = "UPDATE FILMES SET QUANTIDADE = ? WHERE ID_FILME = ?";
     
     public boolean inserirFilme(Filme f){
         
@@ -87,6 +87,7 @@ public class FilmeDAO {
         try {
             // CONECTA
             Conexao.dbConnection();
+            
             PreparedStatement preparaInstrucao;
             preparaInstrucao = Conexao.getConexao().prepareStatement(UPDATEQUANTIDADE);
         

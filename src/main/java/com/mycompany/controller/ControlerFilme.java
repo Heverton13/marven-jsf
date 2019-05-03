@@ -1,6 +1,6 @@
 package com.mycompany.controller;
 
-import com.mycompany.modelo.Cesta;
+
 import com.mycompany.modelo.Filme;
 import com.mycompany.persistencia.FilmeDAO;
 import java.util.ArrayList;
@@ -18,10 +18,12 @@ public class ControlerFilme {
     private ArrayList<Filme> lista = null;
 
     public ControlerFilme() {
+        filme = new Filme();
     }
     
     public void cadastraFilme() {        
         fdao.inserirFilme(filme);
+        filme = new Filme();
      }
       
     
