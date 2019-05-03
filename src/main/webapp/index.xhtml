@@ -10,10 +10,10 @@
     </h:head>
     <h:body>
                         <div id="panelInput">
-                        <h3>Cadastre seus filmes agora:</h3>
+                        <h3>Cadastre seus filmes agora:</h3><br/>
 
                         <h:form>
-                            Título: <p:inputText id="titulo" value="#{controler.filme.titulo}" required="true" requiredMessage="Título não pode ser vazio."/> 
+                            Título: <p:inputText id="titulo" value="#{controler.filme.titulo}" required="true" requiredMessage="O título não pode ser vazio."/> 
                             <p:message id="m1" for="titulo" style="color:red"/> <br/>
                             <br/>
                             Data Lançamento: <p:inputText id="dataLancamento" value="#{controler.filme.data_lancamento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
@@ -32,10 +32,15 @@
                             <p:message id="m4" for="descricao" style="color:red"/> <br/>
                             <br/>
                             Quantidade: <p:inputText id="quantidade" value="#{controler.filme.quantidade}" required="true" requiredMessage="A quantidade deve ser um número maior que zero."/>
-                            <p:message id="m5" for="quantidade" style="color:red"/> <br/>
+                            <p:message  for="quantidade" style="color:red"/> <br/><br/>                            <p:message id="m5" for="quantidade" style="color:red"/> <br/>
 
 
-                            <br/> <p:commandButton action="#{controler.cadastraFilme()}" value="Cadastrar"/>
+                            <h:commandButton styleClass="button" action="#{controler.cadastraFilme()}" value="Cadastrar">
+                            </h:commandButton>
+                            <h:commandButton styleClass="button button2" value="Cancelar">
+                                    <f:ajax render="@form" resetValues="true"/>
+                            </h:commandButton>
+                            
                         </h:form>
                         </div>
         
@@ -87,7 +92,8 @@
                         </h:dataTable>
                     </center>
                     <br/><br/><br/>
-
+                    <center> <h:commandButton styleClass="button button3" value="Ver Cesta" />  </center>
+                    <br/><br/><br/>
     </h:body>
 </html>
 
