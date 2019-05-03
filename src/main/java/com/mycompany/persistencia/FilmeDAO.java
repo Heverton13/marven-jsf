@@ -1,6 +1,7 @@
 
 package com.mycompany.persistencia;
 
+import com.mycompany.modelo.Cesta;
 import com.mycompany.modelo.Filme;
 import java.util.Date;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class FilmeDAO {
     
-    private final String INSERTFILME = "INSERT INTO FILMES (TITULO, DATA_LANCAMENTO, NOTA, DESCRICAO, QUANTIDADE) VALUES (?,?,?,?,?);";
+    private final String INSERTFILME = "insert into filmes (TITULO, DATA_LANCAMENTO, NOTA, DESCRICAO, QUANTIDADE) values (?,?,?,?,?);";
     private final String DELETEFILME = "DELETE FROM FILMES WHERE ID_FILME = ?";
     private final String LISTAFILME = "SELECT * FROM FILMES WHERE ORDER BY";
     

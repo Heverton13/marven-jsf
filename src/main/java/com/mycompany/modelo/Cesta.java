@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.modelo;
+
+import java.util.Date;
 
 /**
  *
@@ -11,31 +9,84 @@ package com.mycompany.modelo;
  */
 public class Cesta {
     
-    private Filme filmes;
-    private int qtd;
+    private int id;
+    private String nome;
+    private Date data;
+    private int nota;
+    private String descricao;
+    private int quantidade;
 
-    public Cesta(Filme filmes, int qtd) {
-        this.filmes = filmes;
-        this.qtd = qtd;
+    public Cesta(int id, String nome, Date data, int nota, String descricao, int quantidade) {
+        this.id = id;
+        this.nome = nome;
+        this.data = data;
+        this.nota = nota;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+    }
+
+    public Cesta(String nome, Date data, int nota, String descricao, int quantidade) {
+        this.nome = nome;
+        this.data = data;
+        this.nota = nota;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
     }
 
     public Cesta() {
     }
 
-    public Filme getFilmes() {
-        return filmes;
+    public int getId() {
+        return id;
     }
 
-    public void setFilmes(Filme filmes) {
-        this.filmes = filmes;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getQtd() {
-        return qtd;
+    public String getNome() {
+        return nome;
     }
 
-    public void setQtd(int qtd) {
-        this.qtd = qtd;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Cesta{" + "id=" + id + ", nome=" + nome + ", data=" + data + ", nota=" + nota + ", descricao=" + descricao + ", quantidade=" + quantidade + '}';
     }
     
     

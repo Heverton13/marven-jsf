@@ -5,82 +5,89 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Locadora de Filmes - Seu filme aqui</title>
+        <title>Locadora de Filmes - Seu filme está aqui</title>
         <h:outputStylesheet library="css" name="estilo.css" />
     </h:head>
     <h:body>
+                        <div id="panelInput">
+                        <h3>Cadastre seus filmes agora:</h3>
+
+                        <h:form>
+                            Título: <p:inputText id="titulo" value="#{controler.filme.titulo}" required="true" requiredMessage="Título não pode ser vazio."/> 
+                            <p:message id="m1" for="titulo" style="color:red"/> <br/>
+                            <br/>
+                            Data Lançamento: <p:inputText id="dataLancamento" value="#{controler.filme.data_lancamento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
+                                <f:convertDateTime pattern="dd/MM/yyyy" for="dataLancamento"/> 
+                            </p:inputText>
+                            <p:message id="m2" for="dataLancamento" style="color:red"/> <br/>
+                            <br/>
+                            Nota: <p:inputText id="nota" value="#{controler.filme.nota}" required="true" requiredMessage="Por favor, A nota deve ser um inteiro de 1 até 5.">
+                                <f:validateDoubleRange maximum="5" minimum="1"/>
+                            </p:inputText>
+                            <p:message id="m3" for="nota" style="color:red"/> <br/>
+                            <br/>
+                            Descrição: <p:inputTextarea id="descricao" value="#{controler.filme.descricao}" required="true" requiredMessage=" A descrição deve conter pelo menos 10 caracteres.">
+                                <f:validateLength minimum="10" maximum="250"/>
+                            </p:inputTextarea>
+                            <p:message id="m4" for="descricao" style="color:red"/> <br/>
+                            <br/>
+                            Quantidade: <p:inputText id="quantidade" value="#{controler.filme.quantidade}" required="true" requiredMessage="A quantidade deve ser um número maior que zero."/>
+                            <p:message id="m5" for="quantidade" style="color:red"/> <br/>
+
+
+                            <br/> <p:commandButton action="#{controler.cadastraFilme()}" value="Cadastrar"/>
+                        </h:form>
+                        </div>
         
-        <div id="panelInput">
-        <h:outputLabel value="Cadastra um Filme: " /> <br></br><br></br>
-        <h:form>
-            
-            <h:outputLabel value="Título: " />
-            <h:inputText value="#{locadora.dados.titulo}"/>
-            
-            <h:outputLabel value="Data Lançamento: " />
-            <h:inputText value="#{locadora.dados.data_lancamento}"/><br></br><br></br>
-            
-            <h:outputLabel value="Nota: " />
-            <h:inputText value="#{locadora.dados.nota}"/><br></br><br></br>
-            
-            <h:outputLabel value="Descrição: " />
-            <h:inputTextarea value="#{locadora.dados.descricao}"/><br></br><br></br>
-            
-            <h:outputLabel value="Quantidade: " />
-            <h:inputText value="#{locadora.dados.quantidade}"/><br></br><br></br>
-            
-            <h:commandButton value="ADICIONAR" action="#{locadora.adicionarFilme()}"/> <br></br><br></br>
-            <h:commandButton value="CANCELAR"/>
-            
-        </h:form>  
-        </div>
-        <br></br><br></br>
-        
-        <center>
-        <h:dataTable value="#{locadora.filmes}" var="filme" border="1">
-        
-        <f:facet name="header">LISTA DE FILMES</f:facet>
-        
-        <h:column>
-           <f:facet name ="header">ID</f:facet>
-           #{filme.id}
-       </h:column>
-        
-        <h:column>
-           <f:facet name ="header">TITULO</f:facet >
-           #{filme.titulo}
-        </h:column>
-        
-         <h:column>
-           <f:facet name ="header">DATA DE LANÇAMENTO</f:facet >
-           #{filme.data_lancamento}
-       </h:column>
-        
-        <h:column>
-           <f:facet name ="header">NOTA</f:facet >
-           #{filme.nota}
-        </h:column>
-        
-         <h:column>
-           <f:facet name ="header">DESCRIÇÃO</f:facet >
-           #{filme.descricao}
-        </h:column>
-        
-        <h:column>
-           <f:facet name ="header">QUANTIDADE</f:facet >
-           #{filme.quantidade}
-        </h:column>
-        
-        <h:column>
-            <f:facet name ="header">ADICIONAR A CESTA</f:facet >
-            <h:commandButton id="botao"
-                value="ADICIONAR"
-                action="#{locadora.adicionarFilme(f)}"
-                />
-        </h:column>
-       </h:dataTable>
-       </center>
-        
+                                
+                    <br></br><br></br>
+
+                    <center>
+                        <h:dataTable value="#{locadora.filmes}" var="filme" border="1">
+
+                            <f:facet name="header">LISTA DE FILMES</f:facet>
+
+                            <h:column>
+                                <f:facet name ="header">ID</f:facet>
+                       #{filme.id}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name ="header">TITULO</f:facet >
+                       #{filme.titulo}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name ="header">DATA DE LANÇAMENTO</f:facet >
+                       #{filme.data_lancamento}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name ="header">NOTA</f:facet >
+                       #{filme.nota}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name ="header">DESCRIÇÃO</f:facet >
+                       #{filme.descricao}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name ="header">QUANTIDADE</f:facet >
+                       #{filme.quantidade}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name ="header">ADICIONAR A CESTA</f:facet >
+                                <h:commandButton id="botao"
+                                                 value="ADICIONAR"
+                                                 action="#{locadora.adicionarFilme(f)}"
+                                                 />
+                            </h:column>
+                        </h:dataTable>
+                    </center>
+                    <br/><br/><br/>
+
     </h:body>
 </html>
 
