@@ -3,7 +3,6 @@ package com.mycompany.controller;
 import com.mycompany.modelo.Cesta;
 import com.mycompany.modelo.Filme;
 import com.mycompany.persistencia.FilmeDAO;
-import java.sql.Date;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 
@@ -15,14 +14,14 @@ import javax.faces.bean.ManagedBean;
 public class ControlerFilme {
   
     private Filme filme = new Filme();
-    FilmeDAO fd = new FilmeDAO();
+    FilmeDAO fdao = new FilmeDAO();
     private ArrayList<Filme> lista = null;
 
     public ControlerFilme() {
     }
     
     public void cadastraFilme() {        
-        fd.inserirFilme(filme);
+        fdao.inserirFilme(filme);
      }
       
     

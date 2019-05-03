@@ -19,6 +19,7 @@ public class FilmeDAO {
     private final String INSERTFILME = "insert into filmes (TITULO, DATA_LANCAMENTO, NOTA, DESCRICAO, QUANTIDADE) values (?,?,?,?,?);";
     private final String DELETEFILME = "DELETE FROM FILMES WHERE ID_FILME = ?";
     private final String LISTAFILME = "SELECT * FROM FILMES WHERE ORDER BY";
+    private final String UPDATEQUANTIDADE = "UPDATE FILMES SET QUANTIDADE = ? WHERE ID = ?";
     
     public boolean inserirFilme(Filme f){
         
@@ -32,7 +33,9 @@ public class FilmeDAO {
             preparaInstrucao = Conexao.getConexao().prepareStatement(INSERTFILME);
             
             preparaInstrucao.setString(1,f.getTitulo());
-            preparaInstrucao.setDate(2, new java.sql.Date(new Date().getTime()));
+            f.setData_lancamento(new java.util.Date());
+            java.sql.Date dataSQL = new java.sql.Date(f.getData_lancamento().getTime());
+            preparaInstrucao.setDate(2, dataSQL);
             preparaInstrucao.setInt(3, f.getNota());
             preparaInstrucao.setString(4, f.getDescricao());
             preparaInstrucao.setInt(5, f.getQuantidade());
@@ -79,5 +82,31 @@ public class FilmeDAO {
         }
         return lista;
     }
+    
+    public boolean updateQuantidade(int u, int id) {
+        try {
+            // CONECTA
+            Conexao.dbConnection();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = Conexao.getConexao().prepareStatement(UPDATEQUANTIDADE);
+        
+            preparaInstrucao.setInt(1, u);
+            preparaInstrucao.setInt(2, id);
+
+            // EXECUTA A INSTRUCAO
+            preparaInstrucao.execute();
+            System.out.println("atualizaou a quantidade");
+
+            // DESCONECTA
+            Conexao.closeConnection();
+
+            return true;
+
+        } catch (SQLException e) {
+            return false;
+
+        }
+
+}
     
 }
