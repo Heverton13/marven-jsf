@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       >
     <h:head>
-        <title>Facelet Title</title>
+        <title>Sua Cesta</title>
         <h:outputStylesheet library="css" name="estilo.css" />
     </h:head>
     <h:body>
@@ -65,9 +65,19 @@
 
                     </p:toolbarGroup>
                 </p:toolbar>
-
-
             </p:fieldset>
+            
+            <h:form>
+                
+                <p:toolbarGroup>
+                    <h:commandButton styleClass="button button3" value="Finalizar Compra" action="#{cesta.finalizarCompra()}" />
+                <h:commandButton styleClass="button button2" value="Limpar Cesta" action="#{cesta.limparCesta()}">
+                </h:commandButton>
+                <br/><br/>
+                <h:outputLabel value="Sua compra teve o valor de: #{cesta.valor}$" />
+                </p:toolbarGroup>
+            
+            </h:form>
             
             
             

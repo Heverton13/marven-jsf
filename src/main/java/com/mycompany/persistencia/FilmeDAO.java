@@ -60,7 +60,7 @@ public class FilmeDAO {
         
         ArrayList<Filme> lista = new ArrayList<Filme>();
         Conexao.dbConnection();
-        String query = "SELECT * FROM FILMES";
+        String query = "SELECT * FROM FILMES ORDER BY ID_FILME";
         
         try {
             PreparedStatement pst = Conexao.getConexao().prepareStatement(query);

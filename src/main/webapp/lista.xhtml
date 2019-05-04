@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
        xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Lista de Filmes disponíveis</title>
         <h:outputStylesheet library="css" name="estilo.css" />
     </h:head>
     <h:body>
@@ -29,7 +29,7 @@
                 
                 <br></br> 
                 <h:form>
-                   <p:dataTable value="#{controler.filmes}" var="filme" border="1">
+                   <p:dataTable value="#{controler.filmes}" var="filme">
 
                             <f:facet name="header">Listagem de Filmes Disponiveis</f:facet>
 

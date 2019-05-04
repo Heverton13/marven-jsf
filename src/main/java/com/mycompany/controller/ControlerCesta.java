@@ -51,15 +51,12 @@ public class ControlerCesta {
 
     public void setQtdCesta(int qtdCesta) {
         this.qtdCesta = qtdCesta;
-    }
-    
-    int q = 0;    
+    }  
     
     public void addFilme(Filme f) {
        
             System.out.println("Quantidade add antes: "+f.getQuantidade());
             qtdCesta++;
-            q--;
             fdao.updateQuantidade(f.getQuantidade()-1, f.getId());
             f.setQuantidade(f.getQuantidade()-1);
             cesta.add(f);
@@ -73,6 +70,22 @@ public class ControlerCesta {
         fdao.updateQuantidade(f.getQuantidade()+1, f.getId());
         f.setQuantidade(f.getQuantidade()+1);
         cesta.remove(f);
-}
+    }
+    
+    public void limparCesta(){
+        
+        for(int i = 0; i < cesta.size(); i++){
+            fdao.updateQuantidade(f.getQuantidade()+1, f.getId());
+            cesta.remove(i);
+        }
+        qtdCesta = 0;
+        valor = 0; 
+        cesta = new ArrayList<Filme>();
+    }
+    
+    public void finalizarCompra(){
+        valor = qtdCesta * 7;
+    }
+    
     
 }
